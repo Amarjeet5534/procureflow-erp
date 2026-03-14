@@ -4,7 +4,7 @@ import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig(() => ({
-  base: process.env.GITHUB_ACTIONS === "true" ? "/procureflow-erp/" : "/",
+  base: "/procureflow-erp/",
   server: {
     host: "::",
     port: 8082,
