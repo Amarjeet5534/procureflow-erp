@@ -1,7 +1,7 @@
 import { useData } from '@/context/DataContext';
 import PageHeader from '@/components/erp/PageHeader';
 import StatusBadge from '@/components/erp/StatusBadge';
-import { FileText, Users, Package, DollarSign, AlertTriangle, Loader2 } from 'lucide-react';
+import { FileText, Users, Package, IndianRupee, AlertTriangle, Loader2 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import type { POStatus } from '@/types/erp';
 
@@ -45,7 +45,7 @@ export default function Dashboard() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
         <StatCard icon={FileText} label="Total Orders" value={purchaseOrders.length} sub={`${pendingCount} pending`} color="bg-primary/10 text-primary" />
-        <StatCard icon={DollarSign} label="Total Value" value={`$${totalValue.toLocaleString('en-US', { minimumFractionDigits: 2 })}`} sub="Across all POs" color="bg-success/10 text-success" />
+        <StatCard icon={IndianRupee} label="Total Value" value={`₹${totalValue.toLocaleString('en-IN', { minimumFractionDigits: 2 })}`} sub="Across all POs" color="bg-success/10 text-success" />
         <StatCard icon={Users} label="Active Vendors" value={vendors.length} sub="Registered suppliers" color="bg-accent/10 text-accent" />
         <StatCard icon={Package} label="Products" value={products.length} sub={`${lowStockProducts.length} low stock`} color="bg-warning/10 text-warning" />
       </div>
@@ -73,7 +73,7 @@ export default function Dashboard() {
                     <td className="px-4 py-3 font-mono text-xs font-medium">{po.reference_no}</td>
                     <td className="px-4 py-3 text-foreground">{po.vendor_name}</td>
                     <td className="px-4 py-3"><StatusBadge status={po.status as POStatus} /></td>
-                    <td className="px-4 py-3 text-right font-medium">${Number(po.total_amount).toFixed(2)}</td>
+                    <td className="px-4 py-3 text-right font-medium">₹{Number(po.total_amount).toFixed(2)}</td>
                   </tr>
                 ))}
               </tbody>

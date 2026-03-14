@@ -107,7 +107,7 @@ export default function Products() {
                 <td className="px-4 py-3">
                   <span className="inline-flex items-center rounded-md bg-secondary px-2 py-0.5 text-xs font-medium text-secondary-foreground">{p.category}</span>
                 </td>
-                <td className="px-4 py-3 text-right font-medium">${Number(p.unit_price).toFixed(2)}</td>
+                <td className="px-4 py-3 text-right font-medium">₹{Number(p.unit_price).toFixed(2)}</td>
                 <td className={`px-4 py-3 text-right font-semibold ${stockColor(p.stock_level)}`}>{p.stock_level}</td>
                 <td className="px-4 py-3 text-right">
                   <div className="flex justify-end gap-1">

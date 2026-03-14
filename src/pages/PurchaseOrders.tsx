@@ -104,9 +104,9 @@ export default function PurchaseOrders() {
                 <td className="px-4 py-3 text-foreground">{po.vendor_name}</td>
                 <td className="px-4 py-3"><StatusBadge status={po.status as POStatus} /></td>
                 <td className="px-4 py-3 text-right">{po.items.length}</td>
-                <td className="px-4 py-3 text-right">${Number(po.subtotal).toFixed(2)}</td>
-                <td className="px-4 py-3 text-right text-muted-foreground">${Number(po.tax_amount).toFixed(2)}</td>
-                <td className="px-4 py-3 text-right font-semibold">${Number(po.total_amount).toFixed(2)}</td>
+                <td className="px-4 py-3 text-right">₹{Number(po.subtotal).toFixed(2)}</td>
+                <td className="px-4 py-3 text-right text-muted-foreground">₹{Number(po.tax_amount).toFixed(2)}</td>
+                <td className="px-4 py-3 text-right font-semibold">₹{Number(po.total_amount).toFixed(2)}</td>
                 <td className="px-4 py-3 text-right">
                   <div className="flex justify-end gap-1">
                     <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => setDetailPO(po)}><Eye className="h-3.5 w-3.5" /></Button>
@@ -152,7 +152,7 @@ export default function PurchaseOrders() {
                       <label className="text-[10px] font-medium text-muted-foreground">Product</label>
                       <Select value={line.product_id} onValueChange={v => updateLine(idx, 'product_id', v)}>
                         <SelectTrigger className="mt-1 h-9 text-xs"><SelectValue placeholder="Select product" /></SelectTrigger>
-                        <SelectContent>{products.map(p => <SelectItem key={p.id} value={p.id}>{p.name} — ${Number(p.unit_price).toFixed(2)}</SelectItem>)}</SelectContent>
+                        <SelectContent>{products.map(p => <SelectItem key={p.id} value={p.id}>{p.name} — ₹{Number(p.unit_price).toFixed(2)}</SelectItem>)}</SelectContent>
                       </Select>
                     </div>
                     <div className="w-20">
@@ -165,7 +165,7 @@ export default function PurchaseOrders() {
                     </div>
                     <div className="w-24 text-right">
                       <label className="text-[10px] font-medium text-muted-foreground">Subtotal</label>
-                      <p className="h-9 flex items-center justify-end text-xs font-semibold text-foreground">${(line.quantity * line.unit_price).toFixed(2)}</p>
+                      <p className="h-9 flex items-center justify-end text-xs font-semibold text-foreground">₹{(line.quantity * line.unit_price).toFixed(2)}</p>
                     </div>
                     {lines.length > 1 && (
                       <Button type="button" variant="ghost" size="icon" className="h-9 w-9 text-destructive shrink-0" onClick={() => removeLine(idx)}><X className="h-3.5 w-3.5" /></Button>
@@ -175,9 +175,9 @@ export default function PurchaseOrders() {
               </div>
             </div>
             <div className="border-t border-border pt-4 space-y-2">
-              <div className="flex justify-between text-sm"><span className="text-muted-foreground">Subtotal</span><span className="font-medium">${totals.subtotal.toFixed(2)}</span></div>
-              <div className="flex justify-between text-sm"><span className="text-muted-foreground">Tax ({(TAX_RATE * 100).toFixed(0)}%)</span><span className="font-medium">${totals.tax_amount.toFixed(2)}</span></div>
-              <div className="flex justify-between text-base font-bold border-t border-border pt-2"><span>Total</span><span className="text-primary">${totals.total_amount.toFixed(2)}</span></div>
+              <div className="flex justify-between text-sm"><span className="text-muted-foreground">Subtotal</span><span className="font-medium">₹{totals.subtotal.toFixed(2)}</span></div>
+              <div className="flex justify-between text-sm"><span className="text-muted-foreground">Tax ({(TAX_RATE * 100).toFixed(0)}%)</span><span className="font-medium">₹{totals.tax_amount.toFixed(2)}</span></div>
+              <div className="flex justify-between text-base font-bold border-t border-border pt-2"><span>Total</span><span className="text-primary">₹{totals.total_amount.toFixed(2)}</span></div>
             </div>
           </div>
           <DialogFooter>
@@ -206,17 +206,17 @@ export default function PurchaseOrders() {
                     <div key={item.id} className="flex items-center justify-between p-2 rounded bg-muted/30 text-sm">
                       <div>
                         <p className="font-medium text-foreground">{item.product_name}</p>
-                        <p className="text-xs text-muted-foreground">{item.quantity} × ${Number(item.unit_price).toFixed(2)}</p>
+                        <p className="text-xs text-muted-foreground">{item.quantity} × ₹{Number(item.unit_price).toFixed(2)}</p>
                       </div>
-                      <p className="font-semibold">${Number(item.subtotal).toFixed(2)}</p>
+                      <p className="font-semibold">₹{Number(item.subtotal).toFixed(2)}</p>
                     </div>
                   ))}
                 </div>
               </div>
               <div className="border-t border-border pt-3 space-y-1 text-sm">
-                <div className="flex justify-between"><span className="text-muted-foreground">Subtotal</span><span>${Number(detailPO.subtotal).toFixed(2)}</span></div>
-                <div className="flex justify-between"><span className="text-muted-foreground">Tax (5%)</span><span>${Number(detailPO.tax_amount).toFixed(2)}</span></div>
-                <div className="flex justify-between font-bold text-base border-t pt-2"><span>Total</span><span className="text-primary">${Number(detailPO.total_amount).toFixed(2)}</span></div>
+                <div className="flex justify-between"><span className="text-muted-foreground">Subtotal</span><span>₹{Number(detailPO.subtotal).toFixed(2)}</span></div>
+                <div className="flex justify-between"><span className="text-muted-foreground">Tax (5%)</span><span>₹{Number(detailPO.tax_amount).toFixed(2)}</span></div>
+                <div className="flex justify-between font-bold text-base border-t pt-2"><span>Total</span><span className="text-primary">₹{Number(detailPO.total_amount).toFixed(2)}</span></div>
               </div>
             </div>
           )}
