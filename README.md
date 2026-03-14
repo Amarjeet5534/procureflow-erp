@@ -2,6 +2,11 @@
 
 ProcureFlow is a Vite + React procurement app for managing vendors, products, purchase orders, and AI-assisted product descriptions on top of Supabase.
 
+## Live links
+
+- GitHub repository: `https://github.com/Amarjeet5534/procureflow-erp`
+- GitHub Pages app: `https://amarjeet5534.github.io/procureflow-erp/#/login`
+
 ## Stack
 
 - React 18
@@ -164,7 +169,7 @@ What you still need to do manually:
 6. In Google Cloud, add the Supabase callback URL and your app origins.
 7. Start the app with `npm run dev` and test login plus product description generation.
 
-What I cannot do from this workspace without your credentials:
+Credentials-controlled tasks:
 
 - Log in to your Supabase account.
 - Set hosted project secrets on your behalf.
