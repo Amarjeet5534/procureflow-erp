@@ -32,6 +32,10 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          VITE_SUPABASE_PROJECT_ID: qbxrbiruxpmnlewikgrp
+          VITE_SUPABASE_URL: https://qbxrbiruxpmnlewikgrp.supabase.co
+          VITE_SUPABASE_PUBLISHABLE_KEY: sb_publishable_0zTLIDRdZI36KtZpNYr2Xg_gkMfXYIG
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
